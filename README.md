@@ -1,0 +1,4 @@
+Publisher
+=========
+
+An RoR application
