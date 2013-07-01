@@ -1,0 +1,37 @@
+<%= render 'dashboard_header' %>
+
+<h1>Editor Details</h1>
+
+<%= form_for :editor, url: { action: 'update' }, method: :patch do |f| %>
+  <% if @editor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@editor.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @editor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div><%= f.label :username %><br />
+  <%= f.text_field :username, :autofocus => true %></div>
+  
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :current_password %><br />
+  <%= f.password_field :current_password %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.submit "Edit Editor" %></div>
+<% end %>
+
+<%= link_to 'Back', editors_path %>
+<%= render 'dashboard_footer' %>

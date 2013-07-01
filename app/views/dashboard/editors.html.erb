@@ -1,0 +1,27 @@
+<%= render 'dashboard_header' %>
+<h1>Listing Editors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @editors.each do |editor| %>
+      <tr>
+        <td><%= editor.username %></td>
+        <td><%= editor.email %></td>
+        <td><%= link_to 'Edit', edit_editor_path(editor) %></td>
+        <td><%= link_to 'Delete', delete_editor_path(editor), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Editor', new_editor_path %>
+<%= render 'dashboard_footer' %>
