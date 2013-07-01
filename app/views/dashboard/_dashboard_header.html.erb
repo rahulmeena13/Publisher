@@ -1,15 +1,35 @@
-<h1>Welcome To Dashboard <%= current_user.username %>!</h1>
-<div id="sidebar">
-	<% if can? :manage, User.new %>
-	<ul><%= link_to 'List Editors', editors_path %></ul>
-	<ul><%= link_to 'New Editor', new_editor_path %></ul>
-	<% end %>
-	<% if can? :manage, Article.new %>
-	<ul><%= link_to 'List Unpublished Articles', unpublished_path %></ul>
-	<% end %>
-	<% if can? :create, Article.new %>
-	<ul><%= link_to 'My Articles/Drafts', myarticles_path %></ul>	
-	<ul><%= link_to 'Draft New Article', new_article_path %></ul>
-	<% end %>
-</div>
-<div id="dashboard_body">
+<div class="span3">
+	<div class="well sidebar-nav">
+		<ul class="nav nav-list">
+			<li class="nav-header">
+				Tasks
+			</li>
+			<% if can? :manage, User.new %>
+			<li <% if request.fullpath == editors_path %>class="active"<% end %>>
+				<%= link_to 'List Editors', editors_path %>
+			</li>
+			<li <% if request.fullpath == new_editor_path %>class="active"<% end %>>
+				<%= link_to 'New Editor', new_editor_path %>
+			</li>
+			<% end %>
+			<% if can? :manage, Article.new %>
+			<li <% if request.fullpath == unpublished_path %>class="active"<% end %>>
+			<%= link_to 'List Unpublished Articles', unpublished_path %>
+			</li>
+			<% end %>
+			<% if can? :create, Article.new %>
+			<li <% if request.fullpath == myarticles_path %>class="active"<% end %>>
+				<%= link_to 'My Articles/Drafts', myarticles_path %>
+			</li>
+			<li <% if request.fullpath == new_article_path %>class="active"<% end %>>
+				<%= link_to 'Draft New Article', new_article_path %>
+			</li>
+			<% end %>
+		</ul>
+	</div><!--/.well -->
+</div><!--/span-->
+<div class="span9">
+	<div class="row">
+		<div class='hero-unit'>
+		<h3>Welcome To Your Dashboard <%= current_user.username.camelize %>!</h3>
+		</div>

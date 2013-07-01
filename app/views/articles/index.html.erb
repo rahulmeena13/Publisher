@@ -1,19 +1,4 @@
-<div class="span3">
-	<div class="well sidebar-nav">
-		<ul class="nav nav-list">
-			<li class="nav-header">
-				Articles
-			</li>
-			<% @articles.each do |article| %>
-			<li <% if request.fullpath == article %> "active"<% end %>>
-				<%= link_to article.title, article %>
-			</li>
-			<% end %>
-		</ul>
-	</div><!--/.well -->
-</div><!--/span-->
-<div class="span9">
-	<div class="row">
+<%= render 'articles_header' %>
 		<% @articles.each do |article| %>
 		<div class="span4">
 			<h2><%= article.title %></h2>
@@ -33,10 +18,8 @@
 			</p>
 		</div>
 		<% end %>
-	</div>
 
 	<% if can? :create, Article.new %>
 	<%= link_to 'New Article', new_article_path, :class => 'btn btn-primary btn-large' %>
 	<% end %>
-
-</div>
+<%= render 'articles_footer' %>

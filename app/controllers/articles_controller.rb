@@ -1,11 +1,10 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy, :publish]
+  before_action :published_articles, only: [:show, :index, :new, :edit]
   load_and_authorize_resource except: [:create]
-
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.where("published = ?", true)
   end
 
   # GET /articles/1
@@ -37,7 +36,7 @@ class ArticlesController < ApplicationController
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
-    
+
     authorize! :create, @article
   end
 
@@ -64,7 +63,7 @@ class ArticlesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def publish
     respond_to do |format|
       if @article.update_attributes(:published => true)
@@ -78,13 +77,18 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_article
-      @article = Article.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def article_params
-      params.require(:article).permit(:title, :body)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_article
+    @article = Article.find(params[:id])
+  end
+
+  def published_articles
+    @articles = Article.where("published = ?", true)
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def article_params
+    params.require(:article).permit(:title, :body)
+  end
 end
