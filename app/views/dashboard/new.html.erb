@@ -1,18 +1,14 @@
 <%= render 'dashboard_header' %>
 <h1>Create New Editor</h1>
 
-<%= form_for :editor, url: editors_path do |f| %>
-  <% if @editor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@editor.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-      <ul>
+<%= simple_form_for :editor, url: editors_path do |f| %>
+ 	<%= f.error_notification %>
       <% @editor.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+           <div class="alert alert-error alert-block">
+      	<button type="button" class="close" data-dismiss="alert">&#215;</button>
+     	<%=msg %>
+    	</div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div><%= f.label :username %><br />
   <%= f.text_field :username, :autofocus => true %></div>
