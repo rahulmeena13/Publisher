@@ -1,12 +1,18 @@
-<h2>Resend confirmation instructions</h2>
+<%= render 'devise/header' %>
+<%= simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, :class => 'form-horizontal' }) do |f| %>
+<fieldset>
+	<legend>
+		Resend confirmation instructions
+	</legend>
+	<%= f.error_notification %>
+	<%= display_base_errors resource %>
+	<%= f.input :email %>
 
-<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.submit "Resend confirmation instructions" %></div>
+	<div class="form-actions">
+		<%= f.submit "Resend confirmation instructions" %>
+	</div>
+</fieldset>
 <% end %>
 
 <%= render "devise/shared/links" %>
+<%= render 'devise/footer' %>
