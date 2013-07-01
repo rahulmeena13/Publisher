@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy, :publish]
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:create]
 
   # GET /articles
   # GET /articles.json

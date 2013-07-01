@@ -14,9 +14,11 @@
 <% if can? :update, @article %>
 	<%= link_to 'Back', dashboard_path %> |
 	<%= link_to 'Edit', edit_article_path(@article) %> | 
+	<% unless @article.published %>
 		<% if can? :manage, @article %>
 			<%= link_to 'Publish', article_publish_path(@article) %> |
 		<% end %>
+	<% end %>
 	<%= link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% else %>
 	<%= link_to 'Back', articles_path %>
