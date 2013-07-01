@@ -1,12 +1,13 @@
+<%= render 'devise/header' %>
 <h2>Sign in</h2>
 
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <%= f.error_notification %>
   <%= display_base_errors resource %>
-  <div><%= f.label :email %><br />
+  <div><%= f.label :email %>
   <%= f.email_field :email, :autofocus => true %></div>
 
-  <div><%= f.label :password %><br />
+  <div><%= f.label :password %>
   <%= f.password_field :password %></div>
 
   <% if devise_mapping.rememberable? -%>
@@ -17,3 +18,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+<%= render 'devise/footer' %>
