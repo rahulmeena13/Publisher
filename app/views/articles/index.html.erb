@@ -14,4 +14,6 @@
       </div>
         <% end %>
 		</div>
-<%= link_to 'New Article', new_article_path %>
+		<% if can? :create, Article.new %>
+			<%= link_to 'New Article', new_article_path %>
+		<% end %>
