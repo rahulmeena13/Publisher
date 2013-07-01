@@ -1,28 +1,28 @@
 <%= render 'articles_header' %>
-<p id="notice"><%= notice %></p>
+<div class="span7 offset1 articles">
+	<p id="notice">
+		<%= notice %>
+	</p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+	<h3>
+		<strong><%= @article.title %></strong>
+	</h3>
+	<blockquote>
+		<p>
+		<small><em> By <%= @article.user.username %>,  Date Created: <%= @article.created_at %></em></small></p>
+		<p class='lead'>
+			<%= @article.body %>
+		</p>
+	</blockquote>
 
-<p>
-  <strong>Body:</strong>
-  <%= @article.body %>
-</p>
-
-
-<% if can? :update, @article %>
-	<%= link_to 'Back', dashboard_path %> |
-	<%= link_to 'Edit', edit_article_path(@article) %> | 
-	<% unless @article.published %>
-		<% if can? :manage, @article %>
-			<%= link_to 'Publish', article_publish_path(@article) %> |
+	<% if can? :update, @article %>
+		<%= link_to 'Edit', edit_article_path(@article), :class => 'btn' %>
+			<% unless @article.published %>
+				<% if can? :manage, @article %>
+				<%= link_to 'Publish', article_publish_path(@article), :class => 'btn' %>
+			<% end %>
 		<% end %>
+		<%= link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
 	<% end %>
-	<%= link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% else %>
-	<%= link_to 'Back', articles_path %>
-<% end %>
-
+</div>
 <%= render 'articles_footer' %>

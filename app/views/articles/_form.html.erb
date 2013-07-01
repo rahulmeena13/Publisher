@@ -1,23 +1,24 @@
-<%= simple_form_for(@article) do |f| %>
- 	<%= f.error_notification %>
-      <% @article.errors.full_messages.each do |msg| %>
-           <div class="alert alert-error alert-block">
-      	<button type="button" class="close" data-dismiss="alert">&#215;</button>
-     	<%=msg %>
-    	</div>
-      <% end %>
+<%= simple_form_for(@article, :html => { :class => "form-horizontal" }) do |f| %>
+<fieldset>
+	<legend>
+		Article
+	</legend>
+	<%= f.error_notification %>
+	<% @article.errors.full_messages.each do |msg| %>
+	<div class="alert alert-error alert-block">
+		<button type="button" class="close" data-dismiss="alert">
+			&#215;
+		</button>
+		<%= msg %>
+	</div>
+	<% end %>
 
+	<%= f.input :title %>
 
-    
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<%= f.input :body, :input_html => { :cols => 50, :rows => 5 } %>
+
+	<div class="form-actions">
+		<%= f.submit %>
+	</div>
+</fieldset>
 <% end %>
