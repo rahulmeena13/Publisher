@@ -1,21 +1,42 @@
+<div class="span3">
+	<div class="well sidebar-nav">
+		<ul class="nav nav-list">
+			<li class="nav-header">
+				Articles
+			</li>
+			<% @articles.each do |article| %>
+			<li <% if request.fullpath == article %> "active"<% end %>>
+				<%= link_to article.title, article %>
+			</li>
+			<% end %>
+		</ul>
+	</div><!--/.well -->
+</div><!--/span-->
+<div class="span9">
+	<div class="row">
+		<% @articles.each do |article| %>
+		<div class="span4">
+			<h2><%= article.title %></h2>
+			<p>
+				By <%= article.user.username %>
+			</p>
+			<p>
+				<%= article.body %>
+			</p>
+			<p>
+				<%= link_to 'Show', article, :class => 'btn' %>
+				<% if can? :update, @article %>
+				<%= link_to 'Edit', edit_article_path(@article), :class => 'btn' %>
+				<%= link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn' %>
 
-      <div class="row">
-       <% @articles.each do |article| %>
-       <div class="span4">
-        <h2><%= article.title %></h2>
-        <p>By <%= article.user.username %> </p>
-        <p><%= article.body %></p>
-        <p>
-        	<%= link_to 'Show', article, :class => 'btn' %> 
-<% if can? :update, @article %>
-	<%= link_to 'Edit', edit_article_path(@article), :class => 'btn' %> 
-	<%= link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn' %>
-
-<% end %>
- </p>
-      </div>
-        <% end %>
+				<% end %>
+			</p>
 		</div>
-		<% if can? :create, Article.new %>
-			<%= link_to 'New Article', new_article_path, :class => 'btn btn-primary btn-large' %>
 		<% end %>
+	</div>
+
+	<% if can? :create, Article.new %>
+	<%= link_to 'New Article', new_article_path, :class => 'btn btn-primary btn-large' %>
+	<% end %>
+
+</div>
