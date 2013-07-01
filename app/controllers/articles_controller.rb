@@ -37,6 +37,8 @@ class ArticlesController < ApplicationController
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
+    
+    authorize! :create, @article
   end
 
   # PATCH/PUT /articles/1
