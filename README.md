@@ -1,4 +1,4 @@
-Publisher
+Publishing App
 =========
 
-An RoR application
+A simple Articles Publishing system, created as a solution to an ROR developer position 
