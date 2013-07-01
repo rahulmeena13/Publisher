@@ -15,5 +15,5 @@
         <% end %>
 		</div>
 		<% if can? :create, Article.new %>
-			<%= link_to 'New Article', new_article_path %>
+			<%= link_to 'New Article', new_article_path, :class => 'btn btn-primary btn-large' %>
 		<% end %>
