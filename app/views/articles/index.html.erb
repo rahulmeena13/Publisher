@@ -1,24 +1,27 @@
 <%= render 'articles_header' %>
-		<% @articles.each do |article| %>
-		<div class="span4">
-			<h2><%= article.title %></h2>
-			<p>
-				<em>By <%= article.user.username %></em>
-			<p>
-				<%= article.body %>
-			</p>
-			<p>
-				<%= link_to 'Show', article, :class => 'btn' %>
-				<% if can? :update, @article %>
-				<%= link_to 'Edit', edit_article_path(article), :class => 'btn' %>
-				<%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn' %>
-
-				<% end %>
-			</p>
-		</div>
-		<% end %>
-
+<div class = "row">
+	<div class="span9 offset7">
 	<% if can? :create, Article.new %>
 	<%= link_to 'New Article', new_article_path, :class => 'btn btn-primary btn-large' %>
 	<% end %>
+	</div>
+</div>
+<% @articles.each do |article| %>
+<div class="span4 articles">
+	<h2><%= article.title %></h2>
+	<small>By <%= article.user.username %></small>
+	<p>
+		<%= article.body %>
+	</p>
+	<p>
+		<%= link_to 'Show', article, :class => 'btn' %>
+		<% if can? :update, @article %>
+		<%= link_to 'Edit', edit_article_path(article), :class => 'btn' %>
+		<%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn' %>
+
+		<% end %>
+	</p>
+</div>
+<% end %>
+
 <%= render 'articles_footer' %>

@@ -1,29 +1,31 @@
 <%= render 'dashboard_header' %>
-<h1>Create New Editor</h1>
 
-<%= simple_form_for :editor, url: editors_path do |f| %>
- 	<%= f.error_notification %>
-      <% @editor.errors.full_messages.each do |msg| %>
-           <div class="alert alert-error alert-block">
-      	<button type="button" class="close" data-dismiss="alert">&#215;</button>
-     	<%=msg %>
-    	</div>
-      <% end %>
+<%= simple_form_for :editor, url: editors_path, :html => { :class => "form-horizontal" } do |f| %>
+<fieldset>
+	<legend>
+		Create Editor
+	</legend>
+	<%= f.error_notification %>
+	<% @editor.errors.full_messages.each do |msg| %>
+	<div class="alert alert-error alert-block">
+		<button type="button" class="close" data-dismiss="alert">
+			&#215;
+		</button>
+		<%= msg %>
+	</div>
+	<% end %>
 
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username, :autofocus => true %></div>
-  
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+ 	<%= f.input :username %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+	<%= f.input :email %>
+	
+  	<%= f.input :password %>
+  	<%= f.input :password_confirmation %>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Create Editor" %></div>
-  
+	<div class="form-actions">
+		<%= f.submit "Create Editor" %>
+	</div>
+</fieldset>
 <% end %>
 
 <%= link_to 'Back', editors_path %>
