@@ -1,7 +1,7 @@
 <%= render 'dashboard_header' %>
-<h1>Listing Editors</h1>
+<span class="label label-inverse">Listing Editors</span>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Username</th>
@@ -16,12 +16,12 @@
       <tr>
         <td><%= editor.username %></td>
         <td><%= editor.email %></td>
-        <td><%= link_to 'Edit', edit_editor_path(editor) %></td>
-        <td><%= link_to 'Delete', delete_editor_path(editor), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_editor_path(editor), :class =>'btn btn-small'  %></td>
+        <td><%= link_to 'Delete', delete_editor_path(editor), method: :delete, data: { confirm: 'Are you sure?' }, :class =>'btn btn-small'  %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New Editor', new_editor_path %>
+<%= link_to 'New Editor', new_editor_path, :class =>'btn btn-small' %>
 <%= render 'dashboard_footer' %>

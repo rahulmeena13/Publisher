@@ -1,7 +1,7 @@
 <%= render 'dashboard_header' %>
-<h1>Listing Drafts</h1>
+<span class="label label-inverse">Listing Drafts</span>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
@@ -16,18 +16,18 @@
     <% unless article.published %>
       <tr>
         <td><%= article.title %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', article, :class =>'btn btn-small' %></td>
+        <td><%= link_to 'Edit', edit_article_path(article) ,:class =>'btn btn-small' %></td>
+        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, :class =>'btn btn-small' %></td>
       </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
 
-<h1>Listing Published Articles</h1>
+<span class="label label-inverse">Listing Published Articles</span>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
@@ -42,9 +42,9 @@
     <% if article.published %>
       <tr>
         <td><%= article.title %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', article, :class =>'btn btn-small' %></td>
+        <td><%= link_to 'Edit', edit_article_path(article), :class =>'btn btn-small' %></td>
+        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, :class =>'btn btn-small' %></td>
       </tr>
       <% end %>
     <% end %>
