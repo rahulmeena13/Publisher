@@ -1,7 +1,7 @@
 Publisher::Application.routes.draw do
   resources :articles
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => 'registrations' }
   
   #Custom Routes for Dashboard
   get 'dashboard/' => 'dashboard#index', as: :dashboard

@@ -26,6 +26,8 @@ gem 'bootstrap-sass'
 
 gem 'simple_form', '~> 3.0.0.rc'
 
+gem 'recaptcha', :require => 'recaptcha/rails'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
