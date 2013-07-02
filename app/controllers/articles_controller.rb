@@ -67,7 +67,7 @@ class ArticlesController < ApplicationController
   def publish
     respond_to do |format|
       if @article.update_attributes(:published => true)
-        format.html { redirect_to dashboard_path, notice: 'Article was successfully published.' }
+        format.html { redirect_to unpublished_path, notice: 'Article was successfully published.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

@@ -9,7 +9,10 @@
 <% @articles.each do |article| %>
 <div class="span4 articles">
 	<h2><%= article.title %></h2>
-	<small>By <%= article.user.username %></small>
+		<small><em> By <% unless article.user == nil %>
+        	 <%= article.user.username %>
+        	  <% else %>Anonymous
+        	  <% end %> On <%= article.created_at %></em></small>
 	<p>
 		<%= article.body %>
 	</p>

@@ -1,8 +1,5 @@
 <%= render 'articles_header' %>
 <div class="span7 offset1 articles">
-	<p id="notice">
-		<%= notice %>
-	</p>
 
 	<h3>
 		<strong><%= @article.title %></strong>
@@ -12,7 +9,7 @@
 		<small><em> By <% unless @article.user == nil %>
         	 <%= @article.user.username %>
         	  <% else %>Anonymous
-        	  <% end %><,  Date Created: <%= @article.created_at %></em></small></p>
+        	  <% end %> On <%= @article.created_at %></em></small></p>
 		<p class='lead'>
 			<%= @article.body %>
 		</p>
