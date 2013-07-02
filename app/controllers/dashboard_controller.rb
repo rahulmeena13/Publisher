@@ -49,11 +49,11 @@ class DashboardController < ApplicationController
      if params[:editor][:password].blank?
        [:password,:password_confirmation,:current_password].collect{|p| params[:editor].delete(p) }
      else
-       @editor.errors[:base] << "The password you entered is incorrect" unless @editor.valid_password?(params[:editor][:current_password])
+       @editor.errors[:base] << "Current Password is incorrect" unless @editor.valid_password?(params[:editor][:current_password])
      end
  
      respond_to do |format|
-       if @editor.errors[:base].empty? and @editor.update_attributes(params[:editor].permit(:username, :email, :password, :password_confirmation, :current_password))
+       if @editor.errors[:base].empty? and @editor.update_attributes(params[:editor].permit(:username, :email, :password))
          flash[:notice] = "User has been updated"
          format.json { render :json => @editor.to_json, :status => 200 }
          format.xml  { head :ok }

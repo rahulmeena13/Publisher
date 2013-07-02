@@ -14,7 +14,10 @@
     <% @articles.each do |article| %>
       <tr>
         <td><%= article.title %></td>
-        <td><%= article.user.username %></td>
+        <td><% unless article.user == nil %>
+        	 <%= article.user.username %>
+        	  <% else %>Anonymous
+        	  <% end %></td>
         <td><%= link_to 'Show', article, :class =>'btn btn-small'  %></td>
       </tr>
     <% end %>

@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
     @article.published = false
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to @article, notice: 'Article was successfully drafted. You can see all your drafts in your Dashboard.' }
         format.json { render action: 'show', status: :created, location: @article }
       else
         format.html { render action: 'new' }
